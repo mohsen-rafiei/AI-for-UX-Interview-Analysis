@@ -6,7 +6,6 @@ End-to-end local-LLM pipeline for:
 - naming clusters as umbrella categories,
 - generating master sentiment tables,
 - running descriptive + Bayesian analysis,
-- evaluating against a ground-truth cheat table.
 
 ## What This Project Does
 
@@ -19,15 +18,11 @@ End-to-end local-LLM pipeline for:
 4. Uses LLM naming (with retrieved context) to assign umbrella category labels.
 5. Produces multiple output matrices for reporting and analysis.
 6. Runs diagnostics and Bayesian uncertainty analysis by umbrella category.
-7. Supports benchmark evaluation with a synthetic dataset + cheat table.
 
 ## Main Files
 
 - `analysis.ipynb` - main notebook (pipeline + analysis sections)
 - `r20.csv` - original sample input reviews
-- `r50_synthetic.csv` - synthetic benchmark input (50 complex reviews)
-- `r50_cheat_table.jsonl` - ground-truth aspect/sentiment/umbrella labels
-- `evaluate_analysis_against_cheat.py` - accuracy evaluation script
 
 ## Dependencies
 
@@ -62,31 +57,7 @@ Run cells in order:
 8. **SECTION 5** - export master tables
 9. **SECTION 6-9** - descriptive, Bayesian, and diagnostic analysis
 
-## Generated Outputs
 
-Core outputs:
-- `extracted_results.jsonl`
-- `master_sentiment_matrix_FINAL.csv`
-- `master_sentiment_matrix_COMPLETE.csv`
-- `master_sentiment_matrix_REPORT.csv`
-
-Analysis outputs:
-- `bayesian_sentiment_summary.csv`
-
-Evaluation outputs:
-- `r50_eval_per_review.csv`
-
-## Evaluation (Sanity Check)
-
-After generating `extracted_results.jsonl` from `r50_synthetic.csv`, run:
-
-```bash
-python evaluate_analysis_against_cheat.py --pred extracted_results.jsonl --cheat r50_cheat_table.jsonl --fuzzy-threshold 0.85
-```
-
-This reports:
-- Topic-level precision/recall/F1 (exact + fuzzy)
-- Umbrella-level precision/recall/F1 (exact + fuzzy-mapped)
 
 ## Notes
 
