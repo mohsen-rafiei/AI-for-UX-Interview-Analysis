@@ -1,5 +1,7 @@
 # Review Aspect Sentiment Pipeline
 
+Workshop recording: https://www.youtube.com/watch?v=fM3z5rc74m8
+
 End-to-end local-LLM pipeline for:
 - extracting review aspects with sentiment/confidence,
 - clustering aspects into semantic groups,
